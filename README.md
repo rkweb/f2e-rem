@@ -20,13 +20,13 @@ rem布局
 	  } 
 	}
 ## js ##
-    ```javascript
-	function rem(psd) {
-		document.documentElement.style.fontSize = 100*document.documentElement.clientWidth / psd + 'px';
-	}
-	
-	rem(640);//传psd宽度
-	```
+```javascript
+function rem(psd) {
+	document.documentElement.style.fontSize = 100*document.documentElement.clientWidth / psd + 'px';
+}
+
+rem(640);//传psd宽度
+```
 
 ## 注意 ##
 
