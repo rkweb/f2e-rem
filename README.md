@@ -1,6 +1,6 @@
 # f2e-rem
 rem布局
-## 移动端头部 ##
+## meta ##
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0;" name="viewport" />
 ## css缩放 ##
     @media screen and (max-height: 500px) {
