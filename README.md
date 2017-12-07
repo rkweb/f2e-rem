@@ -35,6 +35,12 @@ rem布局
 3. 100px = 1rem 可以直接换算
 4. js代码最好放在head里面
 5. chrome模拟手机时，用原始尺寸，不要用原来自己设置的尺寸
+6. 当页面中有canvas时，canvas按照设计图尺寸写，最后把canvas整体缩一下
+	
+	`$('canvas').css({
+	    'width': $(window).width(), 
+	    'height': canva原始的高度*$(window).width()/640
+	})`
 
 
 ## demo ##
