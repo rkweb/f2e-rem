@@ -32,11 +32,12 @@ rem(640);//传psd宽度
 
 
 1. 背景图要加`background-size:cover`属性
-2. img要写width和height
-3. 100px = 1rem 可以直接换算
-4. js代码最好放在head里面
-5. chrome模拟手机时，用原始尺寸，不要用原来自己设置的尺寸
-6. 当页面中有canvas时，canvas按照设计图尺寸写，最后把canvas整体缩一下
+2. 雪碧图`background-size: 整个雪碧图的宽，整个雪碧图的高`，用`background-position`定位每个小图
+3. img要写width和height
+4. 100px = 1rem 可以直接换算
+5. js代码最好放在head里面
+6. chrome模拟手机时，用原始尺寸，不要用原来自己设置的尺寸
+7. 当页面中有canvas时，canvas按照设计图尺寸写，最后把canvas整体缩一下
 	
 ```javascript
 //当canvas不是全屏
