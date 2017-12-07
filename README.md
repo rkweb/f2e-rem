@@ -20,12 +20,13 @@ rem布局
 	  } 
 	}
 ## js ##
-    
+    ```javascript
 	function rem(psd) {
 		document.documentElement.style.fontSize = 100*document.documentElement.clientWidth / psd + 'px';
 	}
 	
 	rem(640);//传psd宽度
+	```
 
 ## 注意 ##
 
@@ -38,9 +39,15 @@ rem布局
 6. 当页面中有canvas时，canvas按照设计图尺寸写，最后把canvas整体缩一下
 	
 ```javascript
+//当canvas不是全屏
 $('canvas').css({
 	'width': $(window).width(), 
 	'height': canva原始的高度*$(window).width()/640
+})
+//当canvas是全屏
+$('canvas').css({
+	'width': $(window).width(), 
+	'height': $(window).height()
 })
 ```
 
