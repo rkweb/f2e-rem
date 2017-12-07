@@ -20,10 +20,12 @@ rem布局
 	  } 
 	}
 ## js ##
-    rem(640);//传psd宽度
+    
 	function rem(psd) {
 		document.documentElement.style.fontSize = 100*document.documentElement.clientWidth / psd + 'px';
 	}
+	
+	rem(640);//传psd宽度
 
 ## 注意 ##
 
@@ -31,6 +33,7 @@ rem布局
 1. 背景图要加`background-size:cover`属性
 2. img要写width和height
 3. 100px = 1rem 可以直接换算
+4. js代码最好放在head里面
 
 
 ## demo ##
