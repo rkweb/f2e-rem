@@ -34,6 +34,7 @@ rem布局
 2. img要写width和height
 3. 100px = 1rem 可以直接换算
 4. js代码最好放在head里面
+5. chrome模拟手机时，用原始尺寸，不要用原来自己设置的尺寸
 
 
 ## demo ##
