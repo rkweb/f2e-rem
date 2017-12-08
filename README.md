@@ -22,7 +22,9 @@ rem布局
 ## js ##
 ```javascript
 function rem(psd) {
-	document.documentElement.style.fontSize = 100*document.documentElement.clientWidth / psd + 'px';
+	var wWidth = window.innerWidth;
+	var fontSize = wWidth > 800 ? 100 : 100*wWidth / psd;
+	document.documentElement.style.fontSize = fontSize + 'px';
 }
 
 rem(640);//传psd宽度
