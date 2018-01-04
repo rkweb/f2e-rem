@@ -13,15 +13,16 @@ rem布局
 		margin-top: -5.15rem;
 		-webkit-transform-origin: center center; 
 	}
-    @media screen and (max-height: 500px) {
+    
+	
+	
+	@media screen and (max-height: 500px) {
 	  .scale {
 	    -webkit-transform: scale(0.9);
 	    transform: scale(0.9);
 	    -webkit-transform-origin: center center; 
 	  } 
 	}
-	
-	
 	@media screen and (max-height: 450px) {
 	  .scale {
 	    -webkit-transform: scale(0.8);
