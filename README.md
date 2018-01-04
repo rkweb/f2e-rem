@@ -1,8 +1,18 @@
 # f2e-rem
 rem布局
 ## meta ##
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0;" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0" name="viewport"/>
 ## css缩放 ##
+	.wrap{
+		width: 6.4rem;
+		height: 10.3rem;
+		position: absolute;
+		left: 50%;
+		margin-left: -3.2rem;
+		top: 50%;
+		margin-top: -5.15rem;
+		-webkit-transform-origin: center center; 
+	}
     @media screen and (max-height: 500px) {
 	  .scale {
 	    -webkit-transform: scale(0.9);
