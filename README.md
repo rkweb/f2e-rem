@@ -34,7 +34,7 @@ rem布局
 ```javascript
 function rem(psd) {
 	var wWidth = window.innerWidth;
-	var fontSize = wWidth > 800 ? 100 : 100*wWidth / psd;
+	var fontSize = wWidth > 900 ? 100 : 100*wWidth / psd;
 	document.documentElement.style.fontSize = fontSize + 'px';
 }
 
