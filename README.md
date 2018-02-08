@@ -26,17 +26,17 @@ function rem(psd) {
 rem(640);//传psd宽度
 
 
-//放在所有wrap标签下面
+//放在所有wrap标签下面   给要缩放的wrap加上scale
 function resizeRem() {
 	var hh = 640 / $(window).width() * $(window).height();
     if(hh < 1000) {
-    	 $('.wrap').css({
+    	 $('.scale').css({
 	    	'-webkit-transform': 'scale(0.9)'
 	    });
     }
 
      if(hh < 900) {
-    	 $('.wrap').css({
+    	 $('.scale').css({
 	    	'-webkit-transform': 'scale(0.8)'
 	    });
     }
