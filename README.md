@@ -2,7 +2,7 @@
 rem布局
 ## meta ##
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0" name="viewport"/>
-## css缩放 ##
+## css ##
 	.wrap{
 		width: 6.4rem;
 		height: 10.3rem;
@@ -15,30 +15,35 @@ rem布局
 	}
     
 	
-	
-	@media screen and (max-height: 500px) {
-	  .scale {
-	    -webkit-transform: scale(0.9);
-	    transform: scale(0.9);
-	    -webkit-transform-origin: center center; 
-	  } 
-	}
-	@media screen and (max-height: 450px) {
-	  .scale {
-	    -webkit-transform: scale(0.8);
-	    transform: scale(0.8);
-	    -webkit-transform-origin: center center; 
-	  } 
-	}
 ## js ##
 ```javascript
+//放在head里面
 function rem(psd) {
 	var wWidth = window.innerWidth;
 	var fontSize = wWidth > 900 ? 100 : 100*wWidth / psd;
 	document.documentElement.style.fontSize = fontSize + 'px';
 }
-
 rem(640);//传psd宽度
+
+
+//放在所有wrap标签下面
+function resizeRem() {
+	var hh = 640 / $(window).width() * $(window).height();
+    console.log(hh)
+    if(hh < 1000) {
+    	 $('.wrap').css({
+	    	'-webkit-transform': 'scale(0.9)'
+	    });
+    }
+
+     if(hh < 900) {
+    	 $('.wrap').css({
+	    	'-webkit-transform': 'scale(0.8)'
+	    });
+    }
+}
+resizeRem();
+$(window).on('resize', resizeRem);
 ```
 
 ## 注意 ##
