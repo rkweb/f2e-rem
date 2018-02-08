@@ -31,15 +31,21 @@ var initHeight = $(window).height();
 function resizeRem() {
 	if(initHeight*0.75 > $(window).height())return;
 	var hh = 640 / $(window).width() * $(window).height();
-    if(hh < 1000) {
-    	 $('.scale').css({
+    if(hh < 1000 && hh >= 900) {
+    	 $('.wrap').css({
 	    	'-webkit-transform': 'scale(0.9)'
 	    });
     }
 
      if(hh < 900) {
-    	 $('.scale').css({
+    	 $('.wrap').css({
 	    	'-webkit-transform': 'scale(0.8)'
+	    });
+    }
+
+    if(hh >= 1000) {
+    	$('.wrap').css({
+	    	'-webkit-transform': 'scale(1)'
 	    });
     }
 }
