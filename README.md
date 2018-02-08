@@ -28,7 +28,7 @@ rem(640);//传psd宽度
 
 //放在所有wrap标签下面   给要缩放的wrap加上scale
 function resizeRem() {
-	if($(window).width() > $(window).height()) return;
+	if(initHeight*0.75 > $(window).height())return;
 	var hh = 640 / $(window).width() * $(window).height();
     if(hh < 1000) {
     	 $('.scale').css({
