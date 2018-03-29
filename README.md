@@ -28,28 +28,29 @@ rem(640);//传psd宽度
 
 //放在所有wrap标签下面   给要缩放的wrap加上scale
 var initHeight = $(window).height();
-function resizeRem() {
+function resizeRem(psd) {
     if(initHeight*0.75 > $(window).height())return;
-    var hh = 640 / $(window).width() * $(window).height();
-    if(hh < 1000 && hh >= 900) {
+   var psdScale = psd / 640;
+    var hh = 640*psdScale / $(window).width() * $(window).height();
+    if(hh < 1000*psdScale && hh >= 900*psdScale) {
     	 $('.scale').css({
 	    	'-webkit-transform': 'scale(0.9)'
 	    });
     }
 
-     if(hh < 900) {
+     if(hh < 900*psdScale) {
     	 $('.scale').css({
 	    	'-webkit-transform': 'scale(0.8)'
 	    });
     }
 
-    if(hh >= 1000) {
+    if(hh >= 1000*psdScale) {
     	$('.scale').css({
 	    	'-webkit-transform': 'scale(1)'
 	    });
     }
 }
-resizeRem();
+resizeRem(640);//传psd宽度
 $(window).on('resize', resizeRem);
 ```
 
