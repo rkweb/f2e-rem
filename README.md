@@ -30,7 +30,8 @@ rem(640);//传psd宽度
 var initHeight = $(window).height();
 function resizeRem(psd) {
     if(initHeight*0.75 > $(window).height())return;
-   var psdScale = psd / 640;
+    rem(psd);
+    var psdScale = psd / 640;
     var hh = 640*psdScale / $(window).width() * $(window).height();
     if(hh < 1000*psdScale && hh >= 900*psdScale) {
     	 $('.scale').css({
