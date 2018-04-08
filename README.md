@@ -2,57 +2,58 @@
 rem布局
 ## meta ##
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0" name="viewport"/>
-## css ##
-	.wrap{
-		width: 6.4rem;
-		height: 10.3rem;
-		position: absolute;
-		left: 50%;
-		margin-left: -3.2rem;
-		top: 50%;
-		margin-top: -5.15rem;
-		-webkit-transform-origin: center center; 
-	}
     
 	
 ## js ##
-```javascript
-//放在head里面
-function rem(psd) {
+```
+ // rem布局 放入head标签中
+(function (psdWidth) {
+    var psdWidth = psdWidth ? psdWidth : 640;
+    var docEl = document.documentElement;
+    var wHeight = window.innerHeight;
+    var resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+    var rem = function () {
+	if (wHeight * 0.75 > window.innerHeight) {
+	    return
+	}; //屏蔽软键盘弹起时触发resize事件（只考虑竖屏）
 	var wWidth = window.innerWidth;
-	var fontSize = wWidth > 900 ? 100 : 100*wWidth / psd;
-	document.documentElement.style.fontSize = fontSize + 'px';
-}
-rem(640);//传psd宽度
-
-
-//放在所有wrap标签下面   给要缩放的wrap加上scale
-var initHeight = $(window).height();
-function resizeRem(psd) {
-    if(initHeight*0.75 > $(window).height())return;
-    rem(psd);
-    var psdScale = psd / 640;
-    var hh = 640*psdScale / $(window).width() * $(window).height();
-    if(hh < 1000*psdScale && hh >= 900*psdScale) {
-    	 $('.scale').css({
-	    	'-webkit-transform': 'scale(0.9)'
-	    });
+	var fontSize = wWidth > 900 ? 100 : 100 * wWidth / psdWidth;
+	docEl.style.fontSize = fontSize + 'px';
     }
+    rem();
+    $(window).on(resizeEvent, function () {
+	clearTimeout(timer);
+	var timer = setTimeout(rem, 300);
+    });
+})(640); //传入设计稿宽度
 
-     if(hh < 900*psdScale) {
-    	 $('.scale').css({
-	    	'-webkit-transform': 'scale(0.8)'
-	    });
-    }
 
-    if(hh >= 1000*psdScale) {
-    	$('.scale').css({
-	    	'-webkit-transform': 'scale(1)'
+
+
+// 内容安全区域等比缩放 
+(function (scaleHeight) {
+    var wHeight = window.innerHeight;
+    var scaleHeight = scaleHeight ? scaleHeight : 1030;
+    var scale = function () {
+	if (wHeight * 0.75 > window.innerHeight) {
+	    return
+	}; //屏蔽软键盘弹起时触发resize事件（只考虑竖屏）
+	var wWidth = window.innerWidth;
+	var wHeight = window.innerHeight;
+	var h = 640 / wWidth * wHeight;
+	if (wWidth > wHeight) { //横屏判断
+	    h = 640 / wHeight * wWidth;
+	}
+	if (h <= scaleHeight) {
+	    $('.scale').css({
+		'-webkit-transform': 'scale(' + h / scaleHeight + ')'
 	    });
+	}
     }
-}
-resizeRem(640);//传psd宽度
-$(window).on('resize', resizeRem);
+    scale();
+    $(window).on('orientationchange' in window ? 'orientationchange' : 'resize', scale);
+})(1030) //传入内容安全区域高度（设计稿宽度换算成640）
+</script>
 ```
 
 ## 注意 ##
@@ -81,4 +82,4 @@ $('canvas').css({
 
 
 ## demo ##
-[点击查看](http://test.go.163.com/go/2017/1009/rem/)
+[点击查看](http://go.163.com/web/f2e_common/common/f2e-rem/)
