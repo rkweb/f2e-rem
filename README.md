@@ -12,12 +12,7 @@ rem布局
     function rem() {
 	var wWidth = window.innerWidth;
 	var wHeight = window.innerHeight;
-	var w;
-	if (wWidth > wHeight) {
-	    w = wHeight;
-	} else {
-	    w = wWidth;
-	}
+	var w = wWidth > wHeight? wHeight: wWidth;
 	var fontSize = w > 1000 ? 100 : 100 * w / psdWidth;
 	document.documentElement.style.fontSize = fontSize + 'px';
     }
@@ -27,6 +22,7 @@ rem布局
 	var timer = setTimeout(rem, 100);
     }, false);
 })(640);  //传入设计稿宽度
+
 
 
 
@@ -42,10 +38,7 @@ rem布局
 	} //屏蔽软键盘弹起时触发resize事件（只考虑竖屏）
 	var wWidth = window.innerWidth;
 	var wHeight = window.innerHeight;
-	var h = 640 / wWidth * wHeight;
-	if (wWidth > wHeight) { //横屏判断
-	    h = 640 / wHeight * wWidth;
-	}
+	var h = wWidth < wHeight? 640 / wWidth * wHeight : 640 / wHeight * wWidth;
 	if (h <= scaleHeight) {
 	    $('.scale').css({
 		'-webkit-transform': 'scale(' + h / scaleHeight + ')'
@@ -54,6 +47,7 @@ rem布局
     }
     scale();
 })(1030); //传入内容安全区域高度（设计稿宽度换算成640）
+
 
 
 ```
