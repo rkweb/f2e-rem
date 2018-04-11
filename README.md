@@ -6,38 +6,40 @@ rem布局
 	
 ## js ##
 ```
- // rem布局 放入head标签中
+// rem布局 放入head标签中
 (function (psdWidth) {
-    var psdWidth = psdWidth ? psdWidth : 640;
-    var docEl = document.documentElement;
-    var wHeight = window.innerHeight;
     var resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
-    var rem = function () {
-	if (wHeight * 0.75 > window.innerHeight) {
-	    return
-	}; //屏蔽软键盘弹起时触发resize事件（只考虑竖屏）
+    function rem() {
 	var wWidth = window.innerWidth;
-	var fontSize = wWidth > 900 ? 100 : 100 * wWidth / psdWidth;
-	docEl.style.fontSize = fontSize + 'px';
+	var wHeight = window.innerHeight;
+	var w;
+	if (wWidth > wHeight) {
+	    w = wHeight;
+	} else {
+	    w = wWidth;
+	}
+	var fontSize = w > 1000 ? 100 : 100 * w / psdWidth;
+	document.documentElement.style.fontSize = fontSize + 'px';
     }
     rem();
-    $(window).on(resizeEvent, function () {
+    window.addEventListener(resizeEvent, function () {
 	clearTimeout(timer);
-	var timer = setTimeout(rem, 300);
-    });
-})(640); //传入设计稿宽度
+	var timer = setTimeout(rem, 100);
+    }, false);
+})(640);  //传入设计稿宽度
 
 
 
 
-// 内容安全区域等比缩放 
+
+//缩放
 (function (scaleHeight) {
     var wHeight = window.innerHeight;
     var scaleHeight = scaleHeight ? scaleHeight : 1030;
     var scale = function () {
 	if (wHeight * 0.75 > window.innerHeight) {
 	    return
-	}; //屏蔽软键盘弹起时触发resize事件（只考虑竖屏）
+	} //屏蔽软键盘弹起时触发resize事件（只考虑竖屏）
 	var wWidth = window.innerWidth;
 	var wHeight = window.innerHeight;
 	var h = 640 / wWidth * wHeight;
@@ -51,9 +53,9 @@ rem布局
 	}
     }
     scale();
-    $(window).on('orientationchange' in window ? 'orientationchange' : 'resize', scale);
-})(1030) //传入内容安全区域高度（设计稿宽度换算成640）
-</script>
+})(1030); //传入内容安全区域高度（设计稿宽度换算成640）
+
+
 ```
 
 ## 注意 ##
